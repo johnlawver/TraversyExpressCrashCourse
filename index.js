@@ -1,10 +1,19 @@
-///left off at 37 minutes
+///left off at 1:04 minutes
 // https://www.youtube.com/watch?v=L72fhGm1tfE
 
 const express = require('express');
 const path = require('path');
+const exphbs = require('express-handlebars');
 const app = express();
 
+//Handlebars Middleware
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
+//HomePage Route
+app.get('/', (req, res) => res.render('index'));
+
+//BodyParser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
